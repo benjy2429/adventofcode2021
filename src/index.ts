@@ -1,17 +1,23 @@
+import path from 'path';
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
+import readInput from './helpers';
 import days from './days';
 
-const { day, part } = yargs(hideBin(process.argv)).options({
-  day: { type: 'string', alias: 'd', demandOption: true },
-  part: { type: 'string', alias: 'p', demandOption: true },
-}).parseSync();
+const { day, part } = yargs(hideBin(process.argv))
+  .options({
+    day: { type: 'string', alias: 'd', demandOption: true },
+    part: { type: 'string', alias: 'p', demandOption: true },
+  })
+  .parseSync();
 
-const script = days[`d${day.padStart(2, '0')}p${part}`];
+const dayPadded = day.padStart(2, '0');
+const script = days[`d${dayPadded}p${part}`];
 
 if (!script) {
   console.error('Script not found');
   process.exit(1);
 }
 
-script();
+const input = readInput(path.join(__dirname, `/days/${dayPadded}/input`));
+script(input);
