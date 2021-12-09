@@ -4,10 +4,11 @@ import { hideBin } from 'yargs/helpers';
 import readInput from './helpers';
 import days from './days';
 
-const { day, part } = yargs(hideBin(process.argv))
+const { day, part, example } = yargs(hideBin(process.argv))
   .options({
     day: { type: 'string', alias: 'd', demandOption: true },
     part: { type: 'string', alias: 'p', demandOption: true },
+    example: { type: 'boolean', alias: 'e' },
   })
   .parseSync();
 
@@ -19,5 +20,8 @@ if (!script) {
   process.exit(1);
 }
 
-const input = readInput(path.join(__dirname, `/days/${dayPadded}/input`));
+const inputFileName = example ? `input-example` : 'input';
+const input = readInput(
+  path.join(__dirname, `/days/${dayPadded}/${inputFileName}`),
+);
 script(input);
