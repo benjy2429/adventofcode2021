@@ -8,6 +8,7 @@ import d04p1 from './04/part1';
 import d04p2 from './04/part2';
 import d05p1 from './05/part1';
 import d05p2 from './05/part2';
+import d06p1 from './06/part1';
 
 interface ScriptMap {
   [key: string]: (path: string) => void;
@@ -24,6 +25,7 @@ const days: ScriptMap = {
   d04p2,
   d05p1,
   d05p2,
+  d06p1,
 };
 
 export default days;
