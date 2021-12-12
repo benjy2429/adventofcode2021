@@ -1,7 +1,7 @@
 import path from 'path';
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
-import readInput from './helpers';
+import { readInput } from './helpers';
 import days from './days';
 
 const { day, part, example } = yargs(hideBin(process.argv))
